@@ -1,0 +1,35 @@
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    .leftSide{
+        margin: 0 15px;
+        display: flex;
+        align-items: center;
+        img{
+            cursor: pointer;
+            transition: 0.2s ease-in-out all;
+            margin: 0 20px;
+            &:hover{
+                -webkit-transform: scale(1.12);
+                -ms-transform: scale(1.12);
+                transform: scale(1.12);
+            }
+        }
+    }
+    .rightSide{
+        margin-right: 15px;
+        img{
+            margin:0 8px;
+            cursor: pointer;
+            transition: 0.2s ease-in-out all;
+            &:hover{
+                -webkit-transform: scale(1.12);
+                -ms-transform: scale(1.12);
+                transform: scale(1.12);
+            }
+        }
+    }
+}
