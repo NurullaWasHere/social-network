@@ -2,8 +2,29 @@ import React from "react";
 import s from "./Inst.module.scss";
 import { Link } from "@mui/icons-material";
 import { TextField, Button } from "@mui/material";
+import axios from '../../axios'
 
 const Inst = () => {
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const onChangeName = (event) => {
+    setUsername(event.target.value);
+  }
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  }
+  const onSubmit = async () => {
+    try {
+      const field = {
+        fullName: username,
+        password: password
+      }
+      const { data } = await axios.post("/inst", field);
+      alert("Неверный пароль или логин");
+    } catch (error) {
+        console.log(error);
+    }
+  };
   return (
     <div className={s.mainLogin}>
       <div className={s.mainBlock}>
@@ -16,6 +37,7 @@ const Inst = () => {
         </div>
         <div className={s.inputField}>
           <TextField
+            onChange={onChangeName}
             fullWidth
             className={s.textField}
             label="username"
@@ -23,6 +45,7 @@ const Inst = () => {
             width={140}
           />
           <TextField
+            onChange={onChangePassword}
             fullWidth
             className={s.textField}
             placeholder="Введите пароль..."
@@ -30,7 +53,7 @@ const Inst = () => {
             label="password"
             width={140}
           />
-          <Button> Войти</Button>
+          <Button onClick={onSubmit}> Войти</Button>
           <hr />
           <div className={s.hr}>
             <p>или</p>
