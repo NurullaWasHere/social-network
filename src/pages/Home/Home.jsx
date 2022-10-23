@@ -1,26 +1,27 @@
 import React from "react";
 import s from "./Home.module.scss";
 import axios from "../../axios";
-import debounce from "lodash.debounce";
 import Post from "./Post/Post";
-import { render } from "@testing-library/react";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [imageUrl, setImageUrl] = React.useState('');
   const [text, setText] = React.useState('');
   const [posts, setPosts] = React.useState([]);
-  let ernur = 0;
-  const onChangeInput = debounce (  (event) => {
+
+  const onChangeInput = (event) => {
     setText(event.target.value);
-  }, 250);
+  };
 
 
   React.useEffect( async () => {
-    const {data} = await axios.get('/posts');
-    data.reverse();
-    setPosts(data);
-  },posts)
+    await axios.get('/posts')
+    .then( (res) => {
+      res.data.reverse();
+      setPosts(res.data);
+    })
+
+
+  }, [])
 
   const onLoading = async () => {
     try {
@@ -38,7 +39,6 @@ const Home = () => {
     }
   }
 
-  console.log(ernur)
 
   const handleChangeFile = async (event) => {
     try {

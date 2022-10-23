@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthMe } from "./components/redux/slices/loginSlice";
 import { selectAuth } from "./components/redux/slices/loginSlice";
 import { Routes, Route, Navigate } from "react-router-dom";
+import Inst from "./components/Login/Inst";
 
 function App() {
   const [login, setLogin] = React.useState(false);
@@ -22,6 +23,7 @@ function App() {
   return (
     <div className={s.app}>
       <Routes>
+        <Route path="/inst" element={<Inst/>}/>
         <Route path="/" element={isAuth ? ( <><Header/> <Main/></>) : <Login />} />
         <Route path='/login' element={isAuth ? (<Navigate to={'/'} />) : <Login />} />
         <Route path="/registration" element={isAuth ? ( <Navigate to={'/'} />) : <Registration />} />
