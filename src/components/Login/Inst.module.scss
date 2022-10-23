@@ -1,5 +1,5 @@
 body{
-    background-color: rgba(0,0,0,0.1);
+    background-color: #FAFAFA;
 }
 
 .mainLogin{ 
@@ -9,12 +9,12 @@ body{
     margin-bottom: 1000px;
     margin-top: 100px;
     .mainBlock{
+        box-sizing: border-box;
+        box-shadow: 1px 1px 1px 1px  rgba($color: #000000, $alpha: 0.1);
         background-color: white;
         width: 500px;
         padding: 100px 0;
         .loginHeader{
-            margin-top: 20px;
-            margin-bottom: 10px;
             display: flex;
             justify-content: center;
         }
@@ -23,6 +23,30 @@ body{
             display: flex;
             flex-direction: column;
             align-items: center;
+            .facebook {
+                font-weight: 700;
+                color: #05359e;
+                font-size: 13px;
+                cursor: pointer;
+                margin-bottom: 15px;
+            }
+            .forgot {
+                font-weight: 700;
+                color: #05359e;
+                font-size: 10px;
+                cursor: pointer;
+            }
+            hr {
+                margin-top: 15px;
+                width: 225px;
+                background-color: rgb(213, 213, 213);
+            }
+            .hr{
+                padding: 15px;
+                background-color: #fff;
+                margin-top: -26px;
+                color: rgb(117, 112, 112);
+            }
             .textField{
                 margin: 10px 0;
                 display: flex;
@@ -34,13 +58,13 @@ body{
                 border: 1px solid #e9ebe7;
                 background: #0095F6;
                 padding: 10px 48px;
-                width: 222px;
+                width: 230px;
                 border: 1px solid #e9ebe7;
-                border-radius: 13px;
-                margin-bottom: 20px;
-                margin-left: 10px;
+                border-radius: 8px;
                 cursor: pointer;
                 color: white;
+                height: 40px;
+                margin-bottom: 15px;
                 font-weight: 500;
                 transition: 0.2s ease-in-out;
                 &:hover{
