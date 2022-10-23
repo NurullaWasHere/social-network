@@ -16,12 +16,14 @@ const Inst = () => {
         </div>
         <div className={s.inputField}>
           <TextField
+            fullWidth
             className={s.textField}
             label="username"
             placeholder="Phone number, username or email"
             width={140}
           />
           <TextField
+            fullWidth
             className={s.textField}
             placeholder="Введите пароль..."
             type="password"
@@ -37,7 +39,6 @@ const Inst = () => {
           <div className={s.forgot}>Забыли пароль?</div>
         </div>
       </div>
-
     </div>
   );
 };
