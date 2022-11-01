@@ -2,43 +2,43 @@ import React from "react";
 import s from "./Home.module.scss";
 import axios from "../../axios";
 import Post from "./Post/Post";
+import PostImage from "../PostImage";
 
 const Home = () => {
-  const [imageUrl, setImageUrl] = React.useState('');
-  const [text, setText] = React.useState('');
+  const [imageUrl, setImageUrl] = React.useState("");
+  const [text, setText] = React.useState("");
   const [posts, setPosts] = React.useState([]);
 
   const onChangeInput = (event) => {
     setText(event.target.value);
   };
 
-
-  React.useEffect( async () => {
-    await axios.get('/posts')
-    .then( (res) => {
-      res.data.reverse();
-      setPosts(res.data);
-    })
-
-
-  }, [])
+  React.useEffect(() => {
+    async function fetchData() {
+      await axios.get("/posts").then((res) => {
+        res.data.reverse();
+        setPosts(res.data);
+      });
+    }
+    fetchData();
+  }, []);
 
   const onLoading = async () => {
     try {
       const field = {
         text,
-        imageUrl
-      }
-      const {data} = await axios.post('/posts', field);
-      setPosts(prev => [...prev, data])
+        imageUrl,
+      };
+      await axios.post("/posts", field);
       // setText('');
       // setImageUrl('');
     } catch (error) {
       console.log(error);
       alert("Ошибки при созданий статий");
     }
-  }
+  };
 
+  console.log("CreatePost");
 
   const handleChangeFile = async (event) => {
     try {
@@ -63,7 +63,11 @@ const Home = () => {
               alt=""
               width={20}
             />
-            <input type="text" placeholder="Введите пост..." onChange={onChangeInput}/>
+            <input
+              type="text"
+              placeholder="Введите пост..."
+              onChange={onChangeInput}
+            />
             <input
               type="file"
               hidden
@@ -77,7 +81,8 @@ const Home = () => {
             />
           </div>
           <div className={s.FileField}>
-            <img src={imageUrl} width={540}/>
+            {/* <PostImage imageUrl={imageUrl}/> */}
+            <img src={imageUrl} alt="" width={540} />
           </div>
           <div className={s.tagField}>
             <span>Public post</span>
@@ -117,8 +122,8 @@ const Home = () => {
           </div>
         </div>
         <div className={s.postBand}>
-          {posts.map( (el) => {
-            return <Post {...el}/> 
+          {posts.map((el, index) => {
+            return <Post key={`${el}_${index}`} {...el} />;
           })}
         </div>
       </div>

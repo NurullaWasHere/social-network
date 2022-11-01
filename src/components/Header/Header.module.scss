@@ -19,6 +19,13 @@
             }
         }
     }
+    .searchBlock{
+        display: flex;
+        align-items: center;
+        img{
+            cursor: pointer;
+        }
+    }
     .rightSide{
         margin-right: 15px;
         img{

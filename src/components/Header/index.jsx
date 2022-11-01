@@ -3,6 +3,7 @@ import s from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import { logOut } from "../redux/slices/loginSlice";
 import { useDispatch } from "react-redux";
+import { TextField, InputAdornment } from "@mui/material";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -19,15 +20,29 @@ const Header = () => {
             alt="aituLogo"
             width={100}
           />
-        </Link>
-          {" "}
-          <img
-            src="https://pic.onlinewebfonts.com/svg/img_422593.png"
-            alt="navBar"
-            width={23}
-          />
+        </Link>{" "}
+        <img
+          src="https://pic.onlinewebfonts.com/svg/img_422593.png"
+          alt="navBar"
+          width={23}
+        />
       </div>
-      <div className={s.searchBlock}></div>
+      <div className={s.searchBlock}>
+        <TextField
+          defaultValue={"Введите поиск"}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <img
+                  src="https://img.icons8.com/sf-ultralight/2x/search.png"
+                  width={23}
+                  alt=""
+                />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </div>
       <div className={s.rightSide}>
         <Link to={"/questions"}>
           <img

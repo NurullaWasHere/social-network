@@ -3,7 +3,7 @@ import s from "./Post.module.scss";
 
 export const Post = ({...el}) => {
   const [isOpenPostMenu, setIsOpenPostMenu] = useState(false);
-  
+  const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   const date = new Date(el.createdAt.toString())
   return (
     <div className={s.postMain}>
@@ -16,7 +16,7 @@ export const Post = ({...el}) => {
           />
           <div>
             <span className={s.name}> {el.user.fullName}</span>
-            <span className={s.date}>{date.getDate()}</span>
+            <span className={s.date}>{`${date.getDate()} ${month[date.getMonth()]} at ${date.getHours()} : ${date.getMinutes()}`}</span>
           </div>
         </div>
         <img

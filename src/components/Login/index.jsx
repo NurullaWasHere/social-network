@@ -51,6 +51,7 @@ const Login = ({ setVoiti, setLogin, setRegister }) => {
               className={s.textField}
               label="E-Mail"
               placeholder="Введите email..."
+              fullWidth
               error={Boolean(errors.email?.message)}
               helperText={errors.email?.message}
               {...register("email", { required: "Укажите почту" })}
@@ -60,6 +61,7 @@ const Login = ({ setVoiti, setLogin, setRegister }) => {
               placeholder="Введите пароль..."
               type="password"
               label="password"
+              fullWidth
               error={Boolean(errors.password?.message)}
               helperText={errors.password?.message}
               {...register("password", { required: "Укажите пароль" })}
@@ -77,12 +79,12 @@ const Login = ({ setVoiti, setLogin, setRegister }) => {
               {" "}
               Login
             </Button>
-            {/* <div>
+            <div>
               <p>Have no account?</p>
               <Link to={"/registration"}>
                 <span>Registration</span>
               </Link>
-            </div> */}
+            </div>
           </form>
         </div>
         <div className={s.loginFooter}>

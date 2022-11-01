@@ -1,30 +1,61 @@
 import React from "react";
 import s from "./Navbar.module.scss";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className={s.navbar}>
-      <div className={s.navbarTop}>
-        <img
-          src="https://pic.onlinewebfonts.com/svg/thumbnails_60_36894.png"
-          alt="avatar"
-          width={40}
-        />
-        <span>Nurulla</span>
-      </div>
       <div className={s.navbarContent}>
-        <div className={s.elem12}>
-          <img src="https://img.icons8.com/windows/2x/news.png" alt="" width={20}/>
-          <span>News</span>
-        </div>
-        <div className={s.elem1}>
-          <img src="https://img.icons8.com/ios/2x/imessage.png" alt="" width={20}/>
-          <span>Messages</span>
-        </div>
-        <div className={s.elem123}>
-          <img src="https://img.icons8.com/ios/2x/prepositions-in-front-on.png" alt="" width={20}/>
-          <span>Smth else</span>
-        </div>
+        <Link to={'/account'} className={s.navElem}>
+          <div >
+            <img
+              width={23}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWM85l8_8g0csORwtfpgd5Dyv-f9twzcVuQ0v2FzawHw&s"
+              alt=""
+            />
+            <p>Account </p>
+          </div>
+        </Link>
+        <Link to={'/'} className={s.navElem}>
+          <div >
+            <img
+              width={23}
+              src="https://cdn-icons-png.flaticon.com/128/7978/7978280.png"
+              alt=""
+            />
+            <p>News </p>
+          </div>
+        </Link>
+        <Link to={'/friends'} className={s.navElem}>
+          <div >
+            <img
+              width={23}
+              src="https://cdn-icons-png.flaticon.com/128/5876/5876959.png"
+              alt=""
+            />
+            <p>Friends</p>
+          </div>
+        </Link>
+        <Link to={'/messages'} className={s.navElem}>
+          <div >
+            <img
+              width={23}
+              src="https://cdn-icons-png.flaticon.com/128/5214/5214951.png"
+              alt=""
+            />
+            <p>Messages</p>
+          </div>
+        </Link>
+        <Link className={s.navElem}>
+          <div >
+            <img
+              width={23}
+              src="https://cdn-icons-png.flaticon.com/128/3382/3382313.png"
+              alt=""
+            />
+            <p>Smth else</p>
+          </div>
+        </Link>
       </div>
     </div>
   );

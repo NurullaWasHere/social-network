@@ -9,12 +9,10 @@ import { fetchAuthMe } from "./components/redux/slices/loginSlice";
 import { selectAuth } from "./components/redux/slices/loginSlice";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Inst from "./components/Login/Inst";
+import Account from "./pages/Account/Account";
 
 function App() {
-  const [login, setLogin] = React.useState(false);
   const isAuth = useSelector(selectAuth);
-  const [register, setRegister] = React.useState(true);
-  const [voiti, setVoiti] = React.useState(false);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchAuthMe());
@@ -25,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/inst" element={<Inst/>}/>
         <Route path="/" element={isAuth ? ( <><Header/> <Main/></>) : <Login />} />
+        <Route path='/account' element={isAuth ? (<><Header/><Account /></>) : <Login />} />
         <Route path='/login' element={isAuth ? (<Navigate to={'/'} />) : <Login />} />
         <Route path="/registration" element={isAuth ? ( <Navigate to={'/'} />) : <Registration />} />
       </Routes>
